@@ -1,0 +1,150 @@
+{
+  "name": "Dell G15 5511 / Alienware M15 R6 Power Sequence",
+  "description": "Sequ\u00eancia de boot para Dell G15 5511 e Alienware M15 R6 - Placa LA-K452P",
+  "manufacturer": "Dell",
+  "model": "G15 5511 / Alienware M15 R6",
+  "board": "LA-K452P",
+  "chipset": "Intel TGL-H",
+  "ec": "MEC1515",
+  "gpu": "NVIDIA GN20",
+  "channels": {
+    "0": "PWRBTN#",
+    "1": "3VALW_EN",
+    "2": "3VALW_PG",
+    "3": "5VALW_EN",
+    "4": "5VALW_PG",
+    "5": "1V8_AON_EN",
+    "6": "3V3_SYS_EN",
+    "7": "DGPU_PWR_EN",
+    "8": "DGPU_PWROK",
+    "9": "PCH_PWROK",
+    "10": "VCORE_EN",
+    "11": "VCORE_PG",
+    "12": "PLT_RST#",
+    "13": "SYS_PWROK",
+    "14": "EC_RSMRST#",
+    "15": "SLP_S3#"
+  },
+  "expected_sequence": [
+    {
+      "signal": "PWRBTN#",
+      "edge": "falling",
+      "time_ms": 0,
+      "tolerance_ms": 1,
+      "critical": true
+    },
+    {
+      "signal": "3VALW_EN",
+      "edge": "rising",
+      "time_ms": 2,
+      "tolerance_ms": 2,
+      "critical": true
+    },
+    {
+      "signal": "3VALW_PG",
+      "edge": "rising",
+      "time_ms": 5,
+      "tolerance_ms": 3,
+      "critical": true
+    },
+    {
+      "signal": "5VALW_EN",
+      "edge": "rising",
+      "time_ms": 7,
+      "tolerance_ms": 3,
+      "critical": true
+    },
+    {
+      "signal": "5VALW_PG",
+      "edge": "rising",
+      "time_ms": 12,
+      "tolerance_ms": 5,
+      "critical": true
+    },
+    {
+      "signal": "1V8_AON_EN",
+      "edge": "rising",
+      "time_ms": 15,
+      "tolerance_ms": 5,
+      "critical": true
+    },
+    {
+      "signal": "3V3_SYS_EN",
+      "edge": "rising",
+      "time_ms": 20,
+      "tolerance_ms": 5,
+      "critical": true
+    },
+    {
+      "signal": "EC_RSMRST#",
+      "edge": "rising",
+      "time_ms": 25,
+      "tolerance_ms": 10,
+      "critical": true
+    },
+    {
+      "signal": "PCH_PWROK",
+      "edge": "rising",
+      "time_ms": 35,
+      "tolerance_ms": 15,
+      "critical": true
+    },
+    {
+      "signal": "SLP_S3#",
+      "edge": "rising",
+      "time_ms": 40,
+      "tolerance_ms": 15,
+      "critical": false
+    },
+    {
+      "signal": "VCORE_EN",
+      "edge": "rising",
+      "time_ms": 45,
+      "tolerance_ms": 10,
+      "critical": true
+    },
+    {
+      "signal": "VCORE_PG",
+      "edge": "rising",
+      "time_ms": 55,
+      "tolerance_ms": 15,
+      "critical": true
+    },
+    {
+      "signal": "PLT_RST#",
+      "edge": "rising",
+      "time_ms": 65,
+      "tolerance_ms": 20,
+      "critical": true
+    },
+    {
+      "signal": "SYS_PWROK",
+      "edge": "rising",
+      "time_ms": 80,
+      "tolerance_ms": 30,
+      "critical": true
+    },
+    {
+      "signal": "DGPU_PWR_EN",
+      "edge": "rising",
+      "time_ms": 100,
+      "tolerance_ms": 50,
+      "critical": false
+    },
+    {
+      "signal": "DGPU_PWROK",
+      "edge": "rising",
+      "time_ms": 150,
+      "tolerance_ms": 50,
+      "critical": false
+    }
+  ],
+  "common_issues": {
+    "3VALW_PG missing": "Verificar buck 3.3V, capacitores, curto no rail",
+    "5VALW_PG missing": "Verificar buck 5V, fus\u00edvel",
+    "1V8_AON_EN not rising": "Verificar EC MEC1515, cristal 32kHz",
+    "PCH_PWROK missing": "Verificar rails do PCH",
+    "VCORE_PG missing": "Verificar IMVP, MOSFETs",
+    "DGPU_PWROK missing": "Verificar reguladores GPU, NVVDD"
+  }
+}

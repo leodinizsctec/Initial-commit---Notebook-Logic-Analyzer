@@ -1,4 +1,18 @@
-# 🔬 Notebook Logic Analyzer
+
+from pathlib import Path
+import zipfile
+import os
+
+# Criar diretório base
+base_dir = Path("notebook-logic-analyzer")
+base_dir.mkdir(parents=True, exist_ok=True)
+(base_dir / "src" / "templates").mkdir(parents=True, exist_ok=True)
+(base_dir / "src" / "capture").mkdir(parents=True, exist_ok=True)
+(base_dir / "src" / "analysis").mkdir(parents=True, exist_ok=True)
+(base_dir / "captures").mkdir(exist_ok=True)
+
+# README.md
+readme = """# 🔬 Notebook Logic Analyzer
 
 <p align="center">
   <img src="https://img.shields.io/badge/Platform-Raspberry%20Pi%203B-red?style=flat-square&logo=raspberry-pi" alt="Platform">
@@ -136,3 +150,98 @@ MIT License - veja [LICENSE](LICENSE)
 ---
 
 <p align="center">Feito com ❤️ para a comunidade de reparo</p>
+"""
+
+(base_dir / "README.md").write_text(readme, encoding="utf-8")
+print("✅ README.md")
+
+# LICENSE
+license_mit = """MIT License
+
+Copyright (c) 2025 Notebook Logic Analyzer Contributors
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+"""
+(base_dir / "LICENSE").write_text(license_mit, encoding="utf-8")
+print("✅ LICENSE")
+
+# .gitignore completo
+gitignore = """# Binários
+*.o
+*.bin
+src/capture/capture
+
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+dist/
+build/
+venv/
+env/
+
+# Capturas do usuário
+captures/*.bin
+captures/*.vcd
+
+# IDE
+.vscode/
+.idea/
+*.swp
+
+# OS
+.DS_Store
+Thumbs.db
+"""
+(base_dir / ".gitignore").write_text(gitignore, encoding="utf-8")
+print("✅ .gitignore")
+
+# CONTRIBUTING.md
+contributing = """# Contribuindo
+
+## Templates de Novos Modelos
+
+A melhor forma de contribuir é adicionar templates para notebooks que você tem acesso.
+
+1. Obtenha o esquemático
+2. Identifique sinais de power sequence
+3. Use `python3 template_manager.py add`
+4. Teste com placa funcionando
+5. Envie Pull Request
+
+## Pull Requests
+
+1. Fork o repositório
+2. Crie branch: `git checkout -b feature/nome`
+3. Commit: `git commit -m "Descrição"`
+4. Push: `git push origin feature/nome`
+5. Abra PR
+
+## Checklist para Templates
+
+- [ ] Nome segue padrão: `fabricante_modelo_placa.json`
+- [ ] Campos obrigatórios preenchidos
+- [ ] Validado: `python3 template_manager.py validate arquivo.json`
+
+Obrigado! 🙏
+"""
+(base_dir / "CONTRIBUTING.md").write_text(contributing, encoding="utf-8")
+print("✅ CONTRIBUTING.md")
+
+print("\n✅ Arquivos do GitHub criados!")
